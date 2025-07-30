@@ -1,24 +1,31 @@
 {
-  "description": "Abre todas las ventanas de Firefox en modo kiosko",
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Autokiosko_screen",
   "version": "3.0",
-  "homepage_url": "https://github.com/tonyway/Autokiosko_screen",
+  "description": "Abre todas las ventanas de Firefox en modo kiosko",
+  "action": {
+    "default_icon": {
+      "64": "icons/Autokiosko_screen_64x64.png",
+      "128": "icons/Autokiosko_screen_128x128.png"
+    }
+  },
   "background": {
-    "scripts": [
-      "startup.js"
-    ]
+    "service_worker": "startup.js"
   },
   "permissions": [
     "windows"
+  ],
+  "host_permissions": [
+    "<all_urls>"
   ],
   "icons": {
     "64": "icons/Autokiosko_screen_64x64.png",
     "128": "icons/Autokiosko_screen_128x128.png"
   },
+  "homepage_url": "https://github.com/tonyway/Autokiosko_screen",
   "applications": {
     "gecko": {
-      "strict_min_version": "48.0"
+      "strict_min_version": "93.0"
     }
   }
 }
