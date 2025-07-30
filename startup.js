@@ -1,41 +1,57 @@
 /*
+ * Copyright 2025 Antony Blanco (Tonyway) 
  * Copyright 2019 Oleksandr Bezushko
  * Copyright 2019 tazeat
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
- * and associated documentation files (the "Software"), to deal in the Software without
- * restriction, including without limitation the rights to use, copy, modify, merge, publish,
- * distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom
- * the Software is furnished to do so, subject to the following conditions:
+/**
+ * Se concede permiso, sin cargo, a cualquier persona que obtenga una copia de este software
+ * y los archivos de documentacion asociados (el "Software"), para utilizar el Software sin
+ * restricciones, incluyendo sin limitacion los derechos de uso, copia, modificacion, fusion,
+ * publicacion, distribucion, sublicenciamiento y/o venta de copias del Software, y para permitir
+ * a las personas a quienes se les proporcione el Software hacerlo, sujeto a las siguientes condiciones:
  *
- * The above copyright notice and this permission notice shall be included
- * in all copies or substantial portions of the Software.
+ * El aviso de copyright anterior y este aviso de permiso deben incluirse en todas las copias o partes
+ * sustanciales del Software.
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
- * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
- * OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
- * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
- * OTHER DEALINGS IN THE SOFTWARE.
+ * EL SOFTWARE SE PROPORCIONA "TAL CUAL", SIN GARANTIA DE NINGUN TIPO, EXPRESA NI IMPLICITA,
+ * INCLUYENDO PERO NO LIMITADO A LAS GARANTIAS DE COMERCIALIZACION, APTITUD PARA UN PROPOSITO
+ * PARTICULAR Y NO INFRACCION. EN NINGUN CASO LOS AUTORES O TITULARES DEL COPYRIGHT SERAN
+ * RESPONSABLES POR NINGUNA RECLAMACION, DANOS U OTRA RESPONSABILIDAD, YA SEA EN UNA ACCION
+ * DE CONTRATO, AGRAVIO O DE OTRO TIPO, DERIVADA DE O EN CONEXION CON EL SOFTWARE O EL USO
+ * U OTROS TRATOS EN EL SOFTWARE.
  */
+ 
 
 function onError(error) {
     console.log(`Error: ${error}`);
 }
 
 function updateWindow(window) {
-    browser.windows.update(window.id, {state: "fullscreen"});
+    if (window && window.id && window.state !== "fullscreen" && window.type === "normal") {
+        browser.windows.update(window.id, { state: "fullscreen" });
+        console.log(`Ventana ${window.id} actualizada a fullscreen`);
+    }
 }
 
-console.log(`AutoFullscreen Running`);
+// Evento inicial — actualiza todas las ventanas abiertas al cargar
+console.log(`AutoFullscreen Extension Running`);
 browser.windows.getAll().then((windowInfoArray) => {
     for (const currentWindow of windowInfoArray) {
-        updateWindow(currentWindow)
+        updateWindow(currentWindow);
     }
 }, onError);
 
+// Evento cuando se crea una nueva ventana
 browser.windows.onCreated.addListener((window) => {
-    console.log("New window: " + window.id);
-    setTimeout(() => updateWindow(window), 50)
+    console.log("Nueva ventana creada: " + window.id);
+    setTimeout(() => {
+        browser.windows.get(window.id).then(updateWindow, onError);
+    }, 500); // Espera aumentada para asegurar carga completa
+});
+
+// Evento cuando cambia el foco a una nueva ventana (refuerzo)
+browser.windows.onFocusChanged.addListener((windowId) => {
+    if (windowId !== browser.windows.WINDOW_ID_NONE) {
+        browser.windows.get(windowId).then(updateWindow, onError);
+    }
 });
