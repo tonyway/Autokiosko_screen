@@ -1,17 +1,20 @@
 {
-  "description": "Open all Firefox windows in full screen mode",
+  "description": "Abre todas las ventanas de Firefox en modo kiosko",
   "manifest_version": 2,
-  "name": "AutoFullscreen",
-  "version": "2.0.4",
-  "homepage_url": "https://github.com/insiderser/AutoFullscreen",
+  "name": "Autokiosko_screen",
+  "version": "3.0",
+  "homepage_url": "https://github.com/tonyway/Autokiosko_screen",
   "background": {
     "scripts": [
       "startup.js"
     ]
   },
+  "permissions": [
+    "windows"
+  ],
   "icons": {
-    "64": "icons/fullscreen_64x64.png",
-    "128": "icons/fullscreen_128x128.png"
+    "64": "icons/Autokiosko_screen_64x64.png",
+    "128": "icons/Autokiosko_screen_128x128.png"
   },
   "applications": {
     "gecko": {
