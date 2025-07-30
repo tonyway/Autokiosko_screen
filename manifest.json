@@ -16,7 +16,7 @@
     "<all_urls>"
   ],
   "icons": {
-    "64": "icons/autokisko_screen64x64.png",
+    "64": "icons/Autokiosko_screen64x64.png",
     "128": "icons/Autokiosko_screen128x128.png"
   },
   "homepage_url": "https://github.com/tonyway/Autokiosko_screen",
