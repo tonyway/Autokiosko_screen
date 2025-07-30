@@ -10,7 +10,7 @@
     }
   },
   "background": {
-    "service_worker": "startup.js"
+    "scripts": ["startup.js"]
   },
   "permissions": [
     "windows"
