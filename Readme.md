@@ -6,8 +6,8 @@ y agrega un detector para actualizar las ventanas nuevas posteriores, mejoranod 
 windows, debido a implementaciones de ventanas popup en oracle apex y fallos al refrescar la misma.
 
 Créditos a [tazeat](https://github.com/tazeat/). Su complemento [add-on](https://github.com/tazeat/AutoFullscreen) 
-activa el modo de pantalla completa solo al iniciar, y a insiderser que [propuso una solución] (https://github.com/tazeat/AutoFullscreen/issues/4) 
-que lo hace funcionar con todas las ventanas (incluso después del inicio). y creo su bifurcacion [add-on] (https://github.com/insiderser/AutoFullscreen)
+activa el modo de pantalla completa solo al iniciar, y a insiderser que [propuso una solución](https://github.com/tazeat/AutoFullscreen/issues/4) 
+que lo hace funcionar con todas las ventanas (incluso después del inicio). y creo su bifurcacion [add-on](https://github.com/insiderser/AutoFullscreen)
 
 Este plugin es simplemente una bifurcación  de la bifucacion de esa solución mejorandola para estos tiempos.
 
