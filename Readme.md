@@ -7,9 +7,9 @@ windows, debido a implementaciones de ventanas popup en oracle apex y fallos al 
 
 Créditos a [tazeat](https://github.com/tazeat/). Su complemento [add-on](https://github.com/tazeat/AutoFullscreen) 
 activa el modo de pantalla completa solo al iniciar, y a insiderser que [propuso una solución] (https://github.com/tazeat/AutoFullscreen/issues/4) 
-que lo hace funcionar con todas las ventanas (incluso después del inicio). y creo su bifurcacion
+que lo hace funcionar con todas las ventanas (incluso después del inicio). y creo su bifurcacion [add-on] (https://github.com/insiderser/AutoFullscreen)
 
-Este plugin es simplemente una bifurcación de esa solución mejorandola para estos tiempos.
+Este plugin es simplemente una bifurcación  de la bifucacion de esa solución mejorandola para estos tiempos.
 
 ¿Encontraste un error? No dudes en [crear](https://github.com/tonwway/Autokiosko_screen/issues/new/choose)
 cualquier problema o enviar una solicitud de extracción.
