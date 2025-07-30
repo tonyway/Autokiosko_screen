@@ -23,9 +23,10 @@
     "128": "icons/Autokiosko_screen_128x128.png"
   },
   "homepage_url": "https://github.com/tonyway/Autokiosko_screen",
-  "applications": {
+  "browser_specific_settings": {
     "gecko": {
+      "id": "tonyway@tonyway.com.ve",
       "strict_min_version": "93.0"
-    }
   }
+}
 }
